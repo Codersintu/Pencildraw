@@ -2,7 +2,6 @@ PencilDraw ✏️
 
 PencilDraw is a real-time collaborative drawing application inspired by Excalidraw.
 It allows users to draw, sketch, and collaborate on a shared canvas using WebSockets for real-time synchronization.
-
 Built with modern full-stack technologies including Next.js, Node.js, PostgreSQL, WebSockets, and managed using Turborepo.
 
 
@@ -37,6 +36,7 @@ Monorepo
 Turborepo
 
 📂 Project Structure
+
 apps/
  ├── client          # Next.js frontend
  ├── ws-server    # WebSocket backend server
