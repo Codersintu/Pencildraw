@@ -1,0 +1,20 @@
+{
+  "name": "@repo/common-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "exports":{
+      "./index":"./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "devDependencies": {
+        "@repo/typescript-config": "workspace:*",
+        "typescript": "^5.9.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

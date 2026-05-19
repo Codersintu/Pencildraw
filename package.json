@@ -1,5 +1,5 @@
 {
-  "name": "PencilDraw",
+  "name": "@repo/pencildraw",
   "private": true,
   "scripts": {
     "build": "turbo run build",

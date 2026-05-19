@@ -23,6 +23,8 @@ Built with modern full-stack technologies including Next.js, Node.js, PostgreSQL
 
 Next.js
 TypeScript
+Tanstack Query
+Canvas
 HTML Canvas API
 Tailwind CSS
 
@@ -49,9 +51,24 @@ packages/
 
 ⚡ How It Works
 1. Login
+   
+
+![Home](./screenshots/home.png)
+
 2. Click on startDrawing Btn
+
+![start](./screenshots/draw.png)
+
+
 3. create Drawing room 
+   
+  ![CanvasRoom](./screenshots/newroom.png)
+
 4. Users join the drawing board.
+
+  ![Canvas](./screenshots/canvas.png)
+
+
 5. Canvas events are captured in real time.
 6. Drawing data is sent through WebSockets.
 7. Backend broadcasts updates to connected users.
