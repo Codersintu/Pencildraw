@@ -6,7 +6,10 @@ Built with modern full-stack technologies including Next.js, Node.js, PostgreSQL
 
 ---
 
+```text
+
 🚀 Features
+```text
 . ✏️ Freehand drawing tool
 . 🧽 Eraser tool
 . 🎨 Color picker support
@@ -40,6 +43,8 @@ Database
 PostgreSQL
 Monorepo
 Turborepo
+
+---
 
 ```text
 📂 Project Structure
