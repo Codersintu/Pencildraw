@@ -1,0 +1,40 @@
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  redeploy_everything:
+    runs-on: ubuntu-latest           # GitHub gives you a temporary Ubuntu machine.
+    name: Deploy everything to the production cluster
+
+    steps:
+      - name: Deploy
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem    # GitHub needs permission to login to EC2.
+          chmod 600 ssh_key.pem
+
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@16.171.170.129 << 'EOF' # SSH into the EC2 instance and run the following commands.
+
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+          node -v
+          pnpm -v
+          pm2 -v
+
+          cd ~/Pencildraw
+
+          git reset --hard HEAD        # Deletes modified files.
+          git clean -fd                # Delete untracked files
+
+          git pull origin production
+          pnpm install
+          pnpm run build
+
+          pm2 restart client
+          pm2 restart server
+          pm2 restart ws-backend
+          EOF
