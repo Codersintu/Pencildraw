@@ -1,0 +1,32 @@
+name: Deploy to staging 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  redeploy_everything:
+    runs-on: ubuntu-latest
+    name: Deploy everything to the staging cluster
+
+    steps:
+      - name: Deploy
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem
+          chmod 600 ssh_key.pem
+
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@13.49.66.80 << 'EOF'
+          cd ~/Pencildraw
+
+          git reset --hard HEAD
+          git clean -fd
+
+          git pull origin main
+          pnpm install
+          pnpm run build
+
+          pm2 restart client
+          pm2 restart server
+          pm2 restart ws-backend
+          EOF
