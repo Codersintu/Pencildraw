@@ -24,7 +24,7 @@ export default function Hero(){
                     <span className="px-5 py-2 bg-blue-100 text-blue-600 text-sm font-medium rounded-full">Free & Open Source</span>
                 </div>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl leading-tight font-bold text-white">
-                    sintu Freely,
+                    Draw Freely,
                     <br />
                     <span className="text-blue-600 relative">
                         collaborate
