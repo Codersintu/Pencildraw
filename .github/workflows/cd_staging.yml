@@ -7,17 +7,17 @@ on:
 
 jobs:
   redeploy_everything:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest           # GitHub gives you a temporary Ubuntu machine.
     name: Deploy everything to the staging cluster
 
     steps:
       - name: Deploy
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem    # GitHub needs permission to login to EC2.
           chmod 600 ssh_key.pem
 
-          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@13.49.66.80 << 'EOF'
-          
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@13.49.66.80 << 'EOF' # SSH into the EC2 instance and run the following commands.
+
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -27,8 +27,8 @@ jobs:
 
           cd ~/Pencildraw
 
-          git reset --hard HEAD
-          git clean -fd
+          git reset --hard HEAD        # Deletes modified files.
+          git clean -fd                # Delete untracked files
 
           git pull origin main
           pnpm install
