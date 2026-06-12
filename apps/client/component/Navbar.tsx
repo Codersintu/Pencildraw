@@ -11,7 +11,7 @@ export default function Navbar(){
              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Pencil className="w-10 h-10 text-[#c5b1a9]"/>
-                    <h1 className="text-3xl text-[#c5b1a9] font-bold">PencilDraw</h1>
+                    <h1 className="text-3xl text-[#c5b1a9] font-bold">PencilDraw AI</h1>
                 </div>
                 <div className="flex items-center gap-10">
                     <a href="#home" className="text-gray-400 hover:text-gray-200 transition-colors">Home</a>
